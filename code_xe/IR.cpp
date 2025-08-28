@@ -39,13 +39,10 @@ void IR :: display()
 }
 
 
-void IR :: detectedline()
+int IR :: detectedline()
 {
-  int a[6] = {0};
-  for(int i = 10; i <= 15; i++)
-  {
-    if(readMux(i) );
-  }
+  if(ir_7C && ir_8C && ir_15C && ir_16C) return 1; // void forward();
+  else return 0; // xe bi lech huong
 }
 
 // trả về giá trị của các led 
@@ -84,10 +81,7 @@ int IR :: readMux(int channel){
     {0,0,1,1}, //channel 13
     {1,0,1,1}, //channel 14
     {0,1,1,1}, //channel 15
-    {1,1,1,1}  //channel 16
-   
-   
-   
+    {1,1,1,1}  //channel 16  
   };
 
   for(int i = 0; i < 4; i ++){
