@@ -7,9 +7,9 @@ extern int s2;
 extern int s3;
 extern int SIG_pin;
 
-extern int IR_3L, IR_4L, IR_5L, IR_6L;
-extern int IR_7C, IR_8C, IR_15C, IR_16C; 
-extern int IR_9R, IR_10R, IR_11R, IR_12R;
+// extern int IR_3L, IR_4L, IR_5L, IR_6L;
+// extern int IR_7C, IR_8C, IR_15C, IR_16C; 
+// extern int IR_9R, IR_10R, IR_11R, IR_12R;
 
 extern int led[];
 extern int black_data[];
@@ -22,6 +22,8 @@ class IR
   static int readMux(int channel); // tra ve gia tri cua tung led 0 - > 16
   static int detectedline(); // xe vẫn nằm trên line 
   static int aver(int channel);
+
+  // giá trị trả về 0 hoặc 1 của từng mắt ir trên line
   static int ir_3L(); 
   static int ir_4L(); 
   static int ir_5L();
@@ -34,9 +36,12 @@ class IR
   static int ir_10R(); 
   static int ir_11R();
   static int ir_12R(); 
+  // giá trị trả về 0 hoặc 1 của từng mắt ir trên line
+
   static int value_ss(int k);
   static void  read_black_line(); // ham lấy giá trị so sánh line trắng 
   static void  read_white_line(); // hàm lấy giá trị so sánh line đen
-  static void  read_information(int STT, int array); // STT là ir thứ STT, array là ir nằm ở chỉ số array trong mang led
+  static void  write_information(int STT, int array); // STT là ir thứ STT, array là ir nằm ở chỉ số array trong mang led
+  static void write_line(); // đọc giá trị của ir trên line
 };
 #endif

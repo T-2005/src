@@ -8,9 +8,9 @@ int s3 = 5;
 //Mux in "SIG" pin
 int SIG_pin = 34;
 
-int IR_3L, IR_4L, IR_5L, IR_6L;
-int IR_7C, IR_8C, IR_15C, IR_16C; 
-int IR_9R, IR_10R, IR_11R, IR_12R;
+// int IR_3L, IR_4L, IR_5L, IR_6L;
+// int IR_7C, IR_8C, IR_15C, IR_16C; 
+// int IR_9R, IR_10R, IR_11R, IR_12R;
 
 int black_data[20] = {0}; // lưu giá trị so sánh của 12 led 
 int white_data[20] = {0};
@@ -132,7 +132,7 @@ int IR :: ir_11R() {return aver(11) > value_ss(11) ? 1 : 0;}
 int IR :: ir_12R() {return aver(12) > value_ss(12) ? 1 : 0;}
 // trả về giá trị của các led
 
-void IR :: read_information(int STT, int array)
+void IR :: write_information(int STT, int array)
 {
   int _value = aver(STT);
   int _value_led = aver(led[array]);
@@ -147,18 +147,18 @@ void IR :: read_information(int STT, int array)
   Serial.print("Gia tri so sanh led thu 3: "); Serial.println(_value_ss_led);
 }
 
-void read_line()
+void IR :: write_line()
 {
-  Serial.print(IR.ir_3L()); Serial.print(" | ");
-  Serial.print(IR.ir_4L()); Serial.print(" | ");
-  Serial.print(IR.ir_5L()); Serial.print(" | ");
-  Serial.print(IR.ir_6L()); Serial.print(" | ");
-  Serial.print(IR.ir_7C()); Serial.print(" | ");
-  Serial.print(IR.ir_8C()); Serial.print(" | ");
-  Serial.print(IR.ir_15C()); Serial.print(" | ");
-  Serial.print(IR.ir_16C()); Serial.print(" | ");
-  Serial.print(IR.ir_9R()); Serial.print(" | ");
-  Serial.print(IR.ir_10R()); Serial.print(" | ");
-  Serial.print(IR.ir_11R()); Serial.print(" | ");
-  Serial.print(IR.ir_12R()); Serial.print(" | ");
+ Serial.print(ir_3L()); Serial.print(" | ");
+  Serial.print(ir_4L()); Serial.print(" | ");
+  Serial.print(ir_5L()); Serial.print(" | ");
+  Serial.print(ir_6L()); Serial.print(" | ");
+  Serial.print(ir_7C()); Serial.print(" | ");
+  Serial.print(ir_8C()); Serial.print(" | ");
+  Serial.print(ir_15C()); Serial.print(" | ");
+  Serial.print(ir_16C()); Serial.print(" | ");
+  Serial.print(ir_9R()); Serial.print(" | ");
+  Serial.print(ir_10R()); Serial.print(" | ");
+  Serial.print(ir_11R()); Serial.print(" | ");
+  Serial.print(ir_12R()); Serial.print(" | ");
 }
