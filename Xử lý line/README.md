@@ -7,6 +7,7 @@ Led 3. Chọn led 9, 10 làm led xác định độ lêch nhẹ về phía bên 
 Led 4. Chọn led 3, 4 làm led xác định độ lệch mạnh về phía bên phải line
 Led 5. Chọn led 11, 12 làm led xác định độ lêch nhẹ về phía bên trái line
 
+![alt](matranir.png)
 ## II. Phương án code 
 
 1. Nếu 1 trong 4 led 7, 8, 15, 16 nằm ngoài vùng line thì đọc đến trường hợp led 2, 3

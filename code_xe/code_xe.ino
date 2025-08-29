@@ -3,19 +3,17 @@ IR IR;
 void setup() {
   Serial.begin(115200);
   IR.init();
-
+  IR.read_black_line();
+  
+  IR.read_white_line();
+ 
+ IR.read_information(16, 8);
 }
 
 void loop() {
-  for(int i = 10; i <= 16; i++)
-  {
-    float tmp = IR.readMux(i);
-   Serial.print(tmp);
-   Serial.print(" ");
-
-  }
+ 
   
-  Serial.println();
+ Serial.println();
   delay(2000);
 
 }
