@@ -10,9 +10,13 @@ Led 5. Chọn led 11, 12 làm led xác định độ lêch nhẹ về phía bên
 ![alt](matranir.png)
 ## II. Phương án code 
 
-1. Nếu 1 trong 4 led 7, 8, 15, 16 nằm ngoài vùng line thì đọc đến trường hợp led 2, 3
-2. Led 2, 3 chia thành đọc từng led 1 
+1. Nếu 1 trong 4 led "6, 7, 8, 15, 16" hoặc "7, 8, 15, 16, 9" nằm trong vùng line thì cho xe đi thẳng
+
+2. Led nhóm  2, 3 chia thành đọc từng led 1 (chưa xác định đc giá trị trả về cho PID)
+
+3.  
 
 ## III. Công việc ngày mai
-- Đo và xác định giá trị các led trên nền trắng và line đen
+- Đo và xác định giá trị các led trên nền trắng và line đen - đã xong
+- Xác định giá trị "readValue" từ Ir. -> đưa ra giá trị trả về phù hợp vs độ lệch line 
  
