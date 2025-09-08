@@ -16,7 +16,21 @@ Led 5. Chọn led 11, 12 làm led xác định độ lêch nhẹ về phía bên
 
 3.  
 
-## III. Công việc ngày mai
+## III. Công việc đã xong 
 - Đo và xác định giá trị các led trên nền trắng và line đen - đã xong
 - Xác định giá trị "readValue" từ Ir. -> đưa ra giá trị trả về phù hợp vs độ lệch line 
+
+### IV. Công việc tiếp theo 
+
+- Bách: code nút nhấn với chức năng (GPIO 27 - Analog)
+	+ Nhấn 1 lần đọc line trắng
+	+ Nhấn lần 2 đọc line đen
+	+ Nhấn lần 3 thì xe hoạt động
+- Hà: Code led đơn, chức năng (GPIO 26 - Analog)
+	+ Đang đọc line trắng nháy - đọc xong line trắng thì led sáng ổn định 2s rồi tắt
+	+ Đang đọc line đen thì nháy - đọc xong line đen thì led sáng ổn định 3s rồi tắt
+	+ Trong khi xe chạy nếu xe song song với line thì sáng ổn định, ngược lại nháy led 
+- Quý: Lắp nút nhấn vào xe 
+- Tuấn: Code PID
+
  
