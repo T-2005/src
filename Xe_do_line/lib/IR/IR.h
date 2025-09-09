@@ -5,6 +5,7 @@ extern int s0;
 extern int s1;
 extern int s2;
 extern int s3;
+//extern int _led;
 extern int SIG_pin;
 
 // extern int IR_3L, IR_4L, IR_5L, IR_6L;
@@ -24,6 +25,8 @@ class IR
   static int aver(int channel);
 
   // giá trị trả về 0 hoặc 1 của từng mắt ir trên line
+  static int ir_1L();
+  static int ir_2L();
   static int ir_3L(); 
   static int ir_4L(); 
   static int ir_5L();
@@ -35,7 +38,9 @@ class IR
   static int ir_9R();
   static int ir_10R(); 
   static int ir_11R();
-  static int ir_12R(); 
+  static int ir_12R();
+  static int ir_13R();
+  static int ir_14R(); 
   // giá trị trả về 0 hoặc 1 của từng mắt ir trên line
 
   static int value_ss(int k);
@@ -44,10 +49,7 @@ class IR
   static void  write_information(int STT); // STT là ir thứ STT
   static void write_line(); // đọc giá trị của ir trên line
 
-  static int  IR_56();
-  static int  IR_34();
-  static int  IR_910();
-  static int  IR_1112();
+  static int fullline();
   static uint8_t value_line(); // hàm trả về giá trị line, dùng để dò line
 };
 #endif
