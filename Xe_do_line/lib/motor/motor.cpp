@@ -56,6 +56,12 @@ void motor::motion(int speedL, int speedR) {
     //digitalWrite(_led, HIGH);
   //  delay(500);
 }
+void motor::backward(int speedL, int speedR) {
+    drive(speedL, speedR, false);
+    
+    //digitalWrite(_led, HIGH);
+  //  delay(500);
+}
 
 
 float motor :: PID_control(float setValue, float readValue, uint32_t lastTimePID, float Kp, float Ki, float Kd)

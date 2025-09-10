@@ -1,21 +1,12 @@
 #include "IR.h"
-//Mux control pins
-// int s0 = 4;
-// int s1 = 19;
-// int s2 = 18;
-// int s3 = 5;
+
 
 int s0 = 23;
 int s1 = 22;
 int s2 = 21;
 int s3 = 19;
-// int _led = 27;
-//Mux in "SIG" pin
 int SIG_pin = 15;
 
-// int IR_3L, IR_4L, IR_5L, IR_6L;
-// int IR_7C, IR_8C, IR_15C, IR_16C; 
-// int IR_9R, IR_10R, IR_11R, IR_12R;
 
 int black_data[20] = {0}; // lưu giá trị so sánh của 12 led 
 int white_data[20] = {0};
@@ -119,7 +110,7 @@ void IR :: read_black_line()
   }
   
   Serial.println("Done read black line!");
-  delay(5000);
+
 }
 
 void IR :: read_white_line()
@@ -133,7 +124,7 @@ void IR :: read_white_line()
   }
    
   Serial.println("Done read white line!");
-  delay(5000);
+  
 }
 
 int IR :: value_ss(int k)
