@@ -47,9 +47,9 @@ class IR
   static void  read_black_line(); // ham lấy giá trị so sánh line trắng 
   static void  read_white_line(); // hàm lấy giá trị so sánh line đen
   static void  write_information(int STT); // STT là ir thứ STT
-  static void write_line(); // đọc giá trị của ir trên line
-
+  static void print_line();
   static int fullline();
-  static uint8_t value_line(); // hàm trả về giá trị line, dùng để dò line
+  
 };
+extern IR IR;
 #endif

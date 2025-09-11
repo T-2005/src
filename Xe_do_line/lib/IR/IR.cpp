@@ -1,6 +1,8 @@
 #include "IR.h"
 
 
+
+
 int s0 = 23;
 int s1 = 22;
 int s2 = 21;
@@ -24,7 +26,6 @@ int led[] = {1, 2, 3, 4, 5, 6, 7, 8, 15, 16, 9, 10, 11, 12, 13, 14};
   digitalWrite(s2, LOW);
   digitalWrite(s3, LOW);
 //  digitalWrite(_led, LOW);
-
 }
 
 
@@ -74,7 +75,8 @@ int IR :: detectedline()
 }
 int IR :: fullline()
 {
-  if((ir_3L() == 1 && ir_4L() == 1 && ir_5L() == 1 && ir_6L() == 1 && ir_9R() == 1 && ir_10R() == 1 && ir_11R() == 1 && ir_12R() == 1  && ir_7C() == 1 && ir_8C() == 1  && ir_15C() == 1 && ir_16C() == 1)  || (ir_3L() == 0 && ir_7C() == 0 && ir_8C() == 0  && ir_15C() == 0 && ir_16C() == 0 && ir_4L() == 0 && ir_5L() == 0 && ir_6L() == 0 && ir_9R() == 0 && ir_10R() == 0 && ir_11R() == 0 && ir_12R() == 0) ) return 1;
+  if((ir_3L() == 0 && ir_4L() == 0 && ir_5L() == 0 && ir_6L() == 0 && ir_9R() == 0 && ir_10R() == 0 && ir_11R() == 0 && ir_12R() == 0  && ir_7C() == 0 && ir_8C() == 0  && ir_15C() == 0 && ir_16C() == 0)  ) return 1;
+  // return 1 if full white
   return 0;
 }
 int IR :: aver(int n) // hàm trả về giá trị trung bình 10 lần đọc của mỗi led
@@ -86,23 +88,11 @@ int IR :: aver(int n) // hàm trả về giá trị trung bình 10 lần đọc 
   return value;
 }
 
-// uint8_t IR :: value_line() // ham trả về giá trị nhị phân 5 bit
-// {
-//   uint8_t value = 0;
-//     value |= (IR_34()      << 4);
-//     value |= (IR_56()      << 3);
-//     value |= (detectedline()<< 2);
-//     value |= (IR_910()     << 1);
-//     value |= (IR_1112()    << 0);
-    
-//     return value;
 
- 
-// }
 void IR :: read_black_line()
 {  
   Serial.println("Preparing read black line.");
-  delay(2000);
+  delay(500);
   for(int i = 0; i < 16; i++)
   {
     black_data[led[i]] += aver(led[i]);
@@ -116,7 +106,7 @@ void IR :: read_black_line()
 void IR :: read_white_line()
 {
   Serial.println("Preparing read white line.");
-  delay(2000);
+  delay(500);
   for(int i = 0; i < 16; i++)
   {
     white_data[led[i]] += aver(led[i]);
@@ -168,7 +158,8 @@ void IR :: write_information(int STT) // in ra giá trị trung bình của 1 IR
   
 }
 
-void IR :: write_line() // in ra giá trị digital của từng IR khi ở trên line trắng(0) - đen(1)
+
+void IR :: print_line() // in ra giá trị digital của từng IR khi ở trên line trắng(0) - đen(1)
 {
   Serial.print(ir_1L()); Serial.print(" | ");
   Serial.print(ir_2L()); Serial.print(" | ");
@@ -185,5 +176,6 @@ void IR :: write_line() // in ra giá trị digital của từng IR khi ở trê
   Serial.print(ir_11R()); Serial.print(" | ");
   Serial.print(ir_12R()); Serial.print(" | ");
   Serial.print(ir_13R()); Serial.print(" | ");
-  Serial.print(ir_14R()); Serial.print(" | ");
+  Serial.println(ir_14R()); Serial.print(" | ");
 }
+
