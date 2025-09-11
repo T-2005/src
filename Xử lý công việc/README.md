@@ -38,12 +38,15 @@
 - Chạy được các góc vuông đơn, góc tù đơn giản
 - Pin - sạc: ok
 - Có 3 loại pin:
+
 ![alt](3pin.png)
 
 ## IV. Khó khăn
 - Chạy trên map thật chưa ổn
 - Thiếu 1 dây căm header đôi cho sạc này: 
+
 ![alt](sac2sell.png)
+
 ## VII. Khắc phục
 - Điều chỉnh hệ sộ Kp và Kd (không cần thay đổi Ki)
 - Tạo hàm sử lý các trường hợp góc khác, ngoài góc vuông, góc tù đơn giản
