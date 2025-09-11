@@ -20,7 +20,7 @@
 - Đo và xác định giá trị các led trên nền trắng và line đen - đã xong
 - Xác định giá trị "readValue" từ Ir. -> đưa ra giá trị trả về phù hợp vs độ lệch line 
 
-### IV. Công việc tiếp theo 
+##IV. Công việc tiếp theo 
 
 - Bách: code nút nhấn với chức năng (GPIO 27 - Analog)
 	+ Nhấn 1 lần đọc line trắng
@@ -32,5 +32,22 @@
 	+ Trong khi xe chạy nếu xe song song với line thì sáng ổn định, ngược lại nháy led 
 - Quý: Lắp nút nhấn vào xe 
 - Tuấn: Code PID
+
+## V. Công việc đã làm được
+- Đọc line ok trên map 
+- Chạy được các góc vuông đơn, góc tù đơn giản
+- Pin - sạc: ok
+- Có 3 loại pin:
+![alt](3pin.png)
+
+## IV. Khó khăn
+- Chạy trên map thật chưa ổn
+- Thiếu 1 dây căm header đôi cho sạc này: 
+![alt](sac2sell.png)
+## VII. Khắc phục
+- Điều chỉnh hệ sộ Kp và Kd (không cần thay đổi Ki)
+- Tạo hàm sử lý các trường hợp góc khác, ngoài góc vuông, góc tù đơn giản
+- Chạy trên map thật
+
 
  
