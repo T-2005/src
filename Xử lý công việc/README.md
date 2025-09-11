@@ -39,13 +39,13 @@
 - Pin - sạc: ok
 - Có 3 loại pin:
 
-![alt](3pin.png)
+![alt](3pin.jpg)
 
 ## IV. Khó khăn
 - Chạy trên map thật chưa ổn
 - Thiếu 1 dây căm header đôi cho sạc này: 
 
-![alt](sac2sell.png)
+![alt](sac2sell.jpg)
 
 ## VII. Khắc phục
 - Điều chỉnh hệ sộ Kp và Kd (không cần thay đổi Ki)
