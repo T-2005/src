@@ -73,7 +73,7 @@ int IR :: detectedline()
   if(ir_7C() && ir_8C() && ir_15C() && ir_16C() && ir_5L()== 0 && ir_10R() == 0) return 1; // void forward();
   else return 0; // xe bi lech huong
 }
-int IR :: fullline()
+int IR :: fullwhiteline()
 {
   if((ir_3L() == 0 && ir_4L() == 0 && ir_5L() == 0 && ir_6L() == 0 && ir_9R() == 0 && ir_10R() == 0 && ir_11R() == 0 && ir_12R() == 0  && ir_7C() == 0 && ir_8C() == 0  && ir_15C() == 0 && ir_16C() == 0)  ) return 1;
   // return 1 if full white

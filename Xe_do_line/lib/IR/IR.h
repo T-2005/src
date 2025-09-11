@@ -18,12 +18,11 @@ extern int white_data[];
 class IR
 {
   public:
-  static void init();
+  static void init(); // hàm khởi tạo các chân 4067
   static void display(); // in ra gia tri 16 mat line
   static int readMux(int channel); // tra ve gia tri cua tung led 0 - > 16
   static int detectedline(); // xe vẫn nằm trên line 
-  static int aver(int channel);
-
+  static int aver(int channel); // hàm đọc từng ir1 10 lần rồi trả về giá trị trung bình
   // giá trị trả về 0 hoặc 1 của từng mắt ir trên line
   static int ir_1L();
   static int ir_2L();
@@ -43,12 +42,12 @@ class IR
   static int ir_14R(); 
   // giá trị trả về 0 hoặc 1 của từng mắt ir trên line
 
-  static int value_ss(int k);
-  static void  read_black_line(); // ham lấy giá trị so sánh line trắng 
-  static void  read_white_line(); // hàm lấy giá trị so sánh line đen
+  static int value_ss(int k); // tạo giá trị so sánh cho các led
+  static void  read_black_line(); // hàm đọc line trắng cho 16 ir 
+  static void  read_white_line(); // hàm đọc line đen cho 16 ir
   static void  write_information(int STT); // STT là ir thứ STT
-  static void print_line();
-  static int fullline();
+  static void print_line(); // hàm in line đọc được từ 16ir
+  static int fullwhiteline(); // nếu ir đọc toàn màu trắng nó sẽ trả về 1
   
 };
 extern IR IR;

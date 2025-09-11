@@ -99,15 +99,15 @@ float PID_value()
     Serial.println(readValue);
     float sp = robot.PID_control(setpoint, readValue, lastTimePID, Kp, Ki, Kd);
     lastTimePID = millis();
-    if (IR.ir_1L() == 1) // 
+    if (IR.ir_1L() == 1) // line vuông góc vs xe bên phải
         last_turn = 1;
 
-    else if (IR.ir_14R() ==1)
+    else if (IR.ir_14R() ==1)// line vuông góc vs xe bên trái
         last_turn = 2;
     return sp;
 }
 
-void followline()
+void followline() 
 {
     float PID = PID_value();
     int lsp = (int)(speed - PID);
@@ -130,10 +130,10 @@ void followline()
         rsp = 0;
     }
     
-    
-    if (IR.fullline() == 1) // nếu xe ra khỏi line đen -> all ir bắt line trắng thì sử dụng biến giá trị cũ điều khiển xe
+    // ý tưởng là tạo 1 biến lưu giá trị cũ của ir, nếu xe chạy ra khỏi line đen và all ir bắt line trắng thì xe sẽ quay về bên last_turn trả về
+    if (IR.fullwhiteline() == 1) // nếu xe ra khỏi line đen -> all ir bắt line trắng thì sử dụng biến giá trị cũ điều khiển xe
     {
-        if (last_turn == 1)
+        if (last_turn == 1) 
         {
             lsp = speed;
             rsp = 50;
