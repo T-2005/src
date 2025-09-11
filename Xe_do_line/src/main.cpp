@@ -9,8 +9,8 @@
 #define in1R 33
 #define in2R 25
 
-// parameter of PID
-float Kp = 2.4;
+// parameter o+9f PID
+float Kp = 4.2;
 float Ki = 0.08;
 float Kd = 0.05;
 float setpoint = 0.0;
@@ -20,7 +20,7 @@ float PID_outPut = 0.0;
 
 int _led = 27;
 int touch = 4;
-int speed = 150;
+int speed = 250;
 
 int dem = 0;
 motor robot(PWML, in1L, in2L, PWMR, in1R, in2R);
@@ -79,11 +79,11 @@ float PID_value()
 {
 
   float readValue = 0.0;
-  // readValue = (float)(IR.ir_6L() * 5.0) + (float)(IR.ir_5L() * 10.0) + (float)(IR.ir_4L() * 15.0) + (float)(IR.ir_3L() * 20.0) + (float)(IR.ir_2L() * 25.0) + (float)(IR.ir_1L() * 30.0);
-  // readValue += (float)(IR.ir_9R() * -5.0) + (float)(IR.ir_10R() * -10.0) + (float)(IR.ir_11R() * -15.0) + (float)(IR.ir_12R() * -20.0) + (float)(IR.ir_13R() * -25.0) + (float)(IR.ir_14R() * -30.0);
+  readValue = (float)(IR.ir_6L() * 5.0) + (float)(IR.ir_5L() * 10.0) + (float)(IR.ir_4L() * 15.0) + (float)(IR.ir_3L() * 20.0) + (float)(IR.ir_2L() * 25.0) + (float)(IR.ir_1L() * 30.0);
+  readValue += (float)(IR.ir_9R() * -5.0) + (float)(IR.ir_10R() * -10.0) + (float)(IR.ir_11R() * -15.0) + (float)(IR.ir_12R() * -20.0) + (float)(IR.ir_13R() * -25.0) + (float)(IR.ir_14R() * -30.0);
 
-  readValue = (float)(IR.ir_6L() * 5.0) + (float)(IR.ir_5L() * 7.5) + (float)(IR.ir_4L() * 10.0) + (float)(IR.ir_3L() * 12.5) + (float)(IR.ir_2L() * 15.0) + (float)(IR.ir_1L() * 17.5);
-  readValue += (float)(IR.ir_9R() * -5.0) + (float)(IR.ir_10R() * -7.5) + (float)(IR.ir_11R() * -10.0) + (float)(IR.ir_12R() * -12.5) + (float)(IR.ir_13R() * -15.0) + (float)(IR.ir_14R() * -17.5);
+  // readValue = (float)(IR.ir_6L() * 5.0) + (float)(IR.ir_5L() * 7.5) + (float)(IR.ir_4L() * 10.0) + (float)(IR.ir_3L() * 12.5) + (float)(IR.ir_2L() * 15.0) + (float)(IR.ir_1L() * 17.5);
+  // readValue += (float)(IR.ir_9R() * -5.0) + (float)(IR.ir_10R() * -7.5) + (float)(IR.ir_11R() * -10.0) + (float)(IR.ir_12R() * -12.5) + (float)(IR.ir_13R() * -15.0) + (float)(IR.ir_14R() * -17.5);
 
   Serial.print("readValue: ");
   Serial.println(readValue);
@@ -118,16 +118,16 @@ void followline()
   Serial.println(lsp);
   Serial.print("rsp: ");
   Serial.println(rsp);
-  if (IR.fullline() == 1)
-  {
-    robot.stop();
-    Serial.println("stop!");
-  }
-  else
-  {
+  // if (IR.fullline() == 1)
+  // {
+  //   robot.stop();
+  //   Serial.println("stop!");
+  // }
+  // else
+  // {
     robot.motion(lsp, rsp);
     Serial.println("activing!");
-  }
+  //}
 }
 void loop()
 {
