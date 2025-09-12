@@ -2,13 +2,18 @@
 #include "IR.h"
 
 const int freq = 5000;
-const int resolution = 8;  // PWM 8-bit (0-255)
+const int resolution = 8; // PWM 8-bit (0-255)
 int _pwmL, _in1L, _in2L;
 int _pwmR, _in1R, _in2R;
 int _pwmChannelL, _pwmChannelR;
-motor :: motor(int pwmL, int in1L, int in2L, int pwmR, int in1R, int in2R) {
-    _pwmL = pwmL; _in1L = in1L; _in2L = in2L;
-    _pwmR = pwmR; _in1R = in1R; _in2R = in2R;
+motor ::motor(int pwmL, int in1L, int in2L, int pwmR, int in1R, int in2R)
+{
+    _pwmL = pwmL;
+    _in1L = in1L;
+    _in2L = in2L;
+    _pwmR = pwmR;
+    _in1R = in1R;
+    _in2R = in2R;
 
     // Khởi tạo chân output
     pinMode(_in1L, OUTPUT);
@@ -25,46 +30,60 @@ motor :: motor(int pwmL, int in1L, int in2L, int pwmR, int in1R, int in2R) {
     ledcAttachPin(_pwmR, _pwmChannelR);
 }
 
-void motor::motorControl(int pwmChannel, int in1, int in2, int speed, bool way) {
-    if (speed == 0) {
+void motor::motorControl(int pwmChannel, int in1, int in2, int speed, bool way)
+{
+    if (speed == 0)
+    {
         digitalWrite(in1, LOW);
         digitalWrite(in2, LOW);
-    } else if (way == true) {
+    }
+    else if (way == true)
+    {
         digitalWrite(in1, LOW);
         digitalWrite(in2, HIGH);
-    } else {
+    }
+    else
+    {
         digitalWrite(in1, HIGH);
         digitalWrite(in2, LOW);
     }
     ledcWrite(pwmChannel, speed);
 }
 
-void motor::drive(int speedL, int speedR, bool way) {
+void motor::drive(int speedL, int speedR, bool way)
+{
     motorControl(_pwmChannelL, _in1L, _in2L, speedL, way);
     motorControl(_pwmChannelR, _in1R, _in2R, speedR, way);
 }
 
-void motor::stop() {
+void motor::stop()
+{
     motorControl(_pwmChannelL, _in1L, _in2L, 0, true);
     motorControl(_pwmChannelR, _in1R, _in2R, 0, true);
-    
 }
 
-void motor::motion(int speedL, int speedR) {
-    drive(speedL, speedR, true);
-    
-    //digitalWrite(_led, HIGH);
-  //  delay(500);
-}
-void motor::backward(int speedL, int speedR) {
-    drive(speedL, speedR, false);
-    
-    //digitalWrite(_led, HIGH);
-  //  delay(500);
+void motor::motion(int speedL, int speedR)
+{
+    if (speedL >= 0 && speedR >= 0)
+    {
+        drive(speedL, speedR, true);
+    }
+    else if (speedR < 0)
+    {
+        motorControl(_pwmChannelR, _in1R, _in2R, speedR, false);
+        motorControl(_pwmChannelL, _in1L, _in2L, speedL, true);
+    }
+    else if (speedL < 0)
+    {
+        motorControl(_pwmChannelR, _in1R, _in2R, speedR, true);
+        motorControl(_pwmChannelR, _in1L, _in2L, speedL, false);
+    }
+
+    // digitalWrite(_led, HIGH);
+    //  delay(500);
 }
 
-
-float motor :: PID_control(float setValue, float readValue, uint32_t lastTimePID, float Kp, float Ki, float Kd)
+float motor ::PID_control(float setValue, float readValue, uint32_t lastTimePID, float Kp, float Ki, float Kd)
 {
     static float error = 0.0;
     static float deltaTime = 0.0;
@@ -72,24 +91,25 @@ float motor :: PID_control(float setValue, float readValue, uint32_t lastTimePID
     static float integral = 0.0;
     static float derivative = 0.0;
     static float output = 0.0;
-    Serial.print("Gia tri output cua PID_control: "); Serial.println(output);
-    
-    Serial.print("Gia tri output cua deltaTime: "); Serial.println(deltaTime);
-    Serial.print("Gia tri output cua lastError: "); Serial.println(lastError);
+    Serial.print("Gia tri output cua PID_control: ");
+    Serial.println(output);
 
-    deltaTime = (float) (millis() - lastTimePID) / 1000.0;
-    
+    Serial.print("Gia tri output cua deltaTime: ");
+    Serial.println(deltaTime);
+    Serial.print("Gia tri output cua lastError: ");
+    Serial.println(lastError);
+
+    deltaTime = (float)(millis() - lastTimePID) / 1000.0;
+
     error = setValue - readValue;
-    Serial.print("Gia tri output cua error: "); Serial.println(error);
+    Serial.print("Gia tri output cua error: ");
+    Serial.println(error);
     integral += (error * deltaTime);
-    integral = constrain (integral, -1000, 1000);
+    integral = constrain(integral, -1000, 1000);
     derivative = (error - lastError) / deltaTime;
 
-    output = (Kp * error)  + (Kd * derivative)+ (Ki * integral);
+    output = (Kp * error) + (Kd * derivative) + (Ki * integral);
     lastError = error;
-  
 
-    
     return output;
 }
-

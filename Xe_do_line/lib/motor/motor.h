@@ -11,9 +11,10 @@ class motor{
     motor(int pwmL, int in1L, int in2L, int pwmR, int in1R, int in2R);
     void drive(int speedL, int speedR, bool forward);
     void stop();
-    void motion(int speedL, int speedR);
+    void motion(int speedL, int speedR); // hàm di chuyển tiến
     
-   void backward(int speedL, int speedR);
+    void backward_R(int speedR); // hàm lùi
+    void backward_L(int speedL); 
     void motorControl(int pwmChannel, int in1, int in2, int speed, bool forward);
 
     float PID_control(float setValue, float readValue, uint32_t lastTimePID, float Kp, float Ki, float Kd); // readValue là thông số đọc được từ ir 3 - > 12; 15, 16
